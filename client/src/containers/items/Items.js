@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './styles.css';
+import ItemCardList from '../../components/ItemCardList/';
 
-const Items = () => {
+const Items = ({data}) => {
 	return(
-		<p>This is the items route</p>
+		<ItemCardList data={data}/>
 	)
 }
 

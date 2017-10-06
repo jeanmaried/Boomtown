@@ -1,0 +1,16 @@
+.logo{
+    height: 2.3rem;
+    margin: .5rem;
+}
+
+.header{
+    background: white;
+}
+
+@media screen and (max-width: 602px){
+    .width{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+}
