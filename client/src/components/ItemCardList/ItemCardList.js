@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ItemCard from '../ItemCard/';
 import Masonry from 'react-masonry-component';
-import '../../flex.css';
 import './styles.css'
 
 const ItemCardList = ({data}) => {
     return (
-        <Masonry className="masonry flex justify-around">
+        <Masonry className="masonry">
             {data.map((item) => {
-                return <div className="item-width"><ItemCard item={item}/></div>
+                return <div className="item-width"><ItemCard key={item.id} item={item}/></div>
             })}
         </Masonry>
     )

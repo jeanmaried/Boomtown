@@ -6,9 +6,8 @@ import Gravatar from 'react-gravatar';
 import './styles.css';
 
 const ItemCard = ({item}) => {
-    console.log(item);
     return (
-    <div className="item-card">
+    <div>
         <Card>
         <CardMedia
             overlay={<CardTitle title="Unavailable" />}
