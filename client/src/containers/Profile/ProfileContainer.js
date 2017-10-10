@@ -35,6 +35,8 @@ class ProfileContainer extends Component{
 				item.itemowner = owners;
 				return item;
 			})
+			// this.props.match.params.id
+			console.log('hi');
 			this.setState({itemsData: itemsWithOwners, isLoading: false});
 		}).catch((err) => {
 			console.log(err);
