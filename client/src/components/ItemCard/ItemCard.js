@@ -14,10 +14,10 @@ const ItemCard = ({item}) => {
         >
             <img src={item.imageurl} alt="" />
         </CardMedia>
-        <Link to="#">
+        <Link to={`/profile/${item.itemowner.id}`}>
         <CardHeader
             title={item.itemowner.fullname}
-            subtitle={item.created}
+            /* subtitle={Moment(item.created).startOf('day').fromNow()}   */
             avatar={<Gravatar email={item.itemowner.email} />}
         />
         </Link>

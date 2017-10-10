@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Items from './Items';
+import Loader from '../../components/Loader'
 
 class ItemsContainer extends Component{
 	constructor(){
@@ -14,7 +15,9 @@ class ItemsContainer extends Component{
 
 	render(){
 		return(
-			<Items data={this.state.itemsData}/>
+			<div>
+				{this.state.isLoading ? <Loader /> : <Items data={this.state.itemsData}/>}
+			</div>
 		)
 	}
 
