@@ -4,28 +4,10 @@ import {Link} from 'react-router-dom';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Gravatar from 'react-gravatar';
-import differenceInDays from 'date-fns/difference_in_days'
+import distanceInWords from 'date-fns/distance_in_words';
+import startOfToday from 'date-fns/start_of_today';
 
 const ItemCard = ({item}) => {
-    let today = new Date();
-    let dd = today.getDate();
-    let mm = today.getMonth()+1;
-    let yyyy = today.getFullYear();
-
-    if(dd<10) {
-        dd = '0'+dd
-    } 
-    if(mm<10) {
-        mm = '0'+mm
-    }
-    today = yyyy + "-" + mm + "-" + dd;
-
-    String.prototype.trunc = String.prototype.trunc ||
-    function(n){
-        return (this.length > n) ? this.substr(0, n-1) : this;
-    };
-
-    let timeCreated = item.created.trunc(11);
 
     return (
     <div>
@@ -38,7 +20,7 @@ const ItemCard = ({item}) => {
         <Link to={`/profile/${item.itemowner.id}`}>
         <CardHeader
             title={item.itemowner.fullname}
-            subtitle={`${differenceInDays(today, timeCreated)} days ago`}
+            subtitle={`${distanceInWords(item.created, startOfToday())} ago`}
             avatar={<Gravatar email={item.itemowner.email} />}
         />
         </Link>

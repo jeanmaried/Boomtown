@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ProfileCard from '../../components/ProfileCard/';
 
-const Profile = ({data}) => {
+const Profile = ({data, profileId}) => {
 	return(
-		<ProfileCard data={data}/>
+		<ProfileCard data={data} profileId={profileId}/>
 	)
 }
 

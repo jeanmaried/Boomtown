@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Profile from './Profile';
+import Loader from '../../components/Loader'
 
 class ProfileContainer extends Component{
 	constructor(){
@@ -8,18 +9,21 @@ class ProfileContainer extends Component{
 
 		this.state = {
 			isLoading: false,
-			itemsData: []
+			itemsData: [],
+			profileId: ""
 		}
 	}
 
 	render(){
 		return(
-			//if true show <Loader /> else show <items />
-			<Profile data={this.state.itemsData}/>
+			<div>
+				{this.state.isLoading ? <Loader /> : <Profile data={this.state.itemsData} profileId={this.state.profileId}/>}
+			</div>
 		)
 	}
 
 	componentDidMount(){
+		let profileId = this.props.match.params.userid;
 		let items_data = 'http://localhost:3001/items';
 		let users_data = 'http://localhost:3001/users';
 		let urls = [items_data, users_data];
@@ -35,9 +39,7 @@ class ProfileContainer extends Component{
 				item.itemowner = owners;
 				return item;
 			})
-			// this.props.match.params.id
-			console.log('hi');
-			this.setState({itemsData: itemsWithOwners, isLoading: false});
+			this.setState({itemsData: itemsWithOwners, isLoading: false, profileId});
 		}).catch((err) => {
 			console.log(err);
 		})
