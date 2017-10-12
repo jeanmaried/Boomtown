@@ -7,6 +7,7 @@ import Gravatar from 'react-gravatar';
 import {Button2} from '../Buttons/Buttons';
 import distanceInWords from 'date-fns/distance_in_words';
 import startOfToday from 'date-fns/start_of_today';
+import './styles.css'
 
 const ItemCard = ({item}) => {
     console.log(item);
@@ -16,8 +17,9 @@ const ItemCard = ({item}) => {
         <CardMedia
             overlay={item.borrower !== null ? <CardTitle title="Unavailable" /> : null}
         >
-            <img src={item.imageurl} alt="" />
+        <img src={item.imageurl} alt="" />
         </CardMedia>
+        
         <Link to={`/profile/${item.itemowner.id}`}>
         <CardHeader
             title={item.itemowner.fullname}
@@ -25,7 +27,7 @@ const ItemCard = ({item}) => {
             avatar={<Gravatar email={item.itemowner.email} />}
         />
         </Link>
-        <CardTitle title={item.title}  subtitle={item.tags[0]}/>
+        <CardTitle title={item.title}  subtitle={item.tags}/>
         <CardText>
             <p>{item.description}</p>
         </CardText>

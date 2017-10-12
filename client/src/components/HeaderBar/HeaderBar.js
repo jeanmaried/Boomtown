@@ -1,12 +1,14 @@
 import React from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
+import {Link} from 'react-router-dom';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
 import {Buttons} from '../Buttons/Buttons';
-import AutoCompleted from './AutoComplete'
+import Dropdown from '../Buttons/Dropdown';
+import AutoCompleted from './AutoComplete';
 import logo from '../../images/boomtown-logo.svg';
-import './styles.css'
+import './styles.css';
 import '../../flex.css'
 
 function handleTouchTap() {
@@ -26,8 +28,8 @@ const styles = {
 const HeaderBar = () => (
   <div className="header flex justify-between flex-wrap">
     <div className="logo flex justify-end">
-      <img src={logo} alt="Boomtown Logo" />
-      <AutoCompleted />
+      <Link to=""><img src={logo} alt="Boomtown Logo" /></Link>
+      <Dropdown />
     </div>
     <div className="width">
     <Buttons/>
