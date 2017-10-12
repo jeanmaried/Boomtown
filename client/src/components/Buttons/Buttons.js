@@ -5,11 +5,15 @@ const style = {
   margin: 12,
 };
 
-const Buttons = () => (
+export const Buttons = () => (
   <div>
     <RaisedButton label="MY PROFILE" primary={true} style={style} />
     <RaisedButton label="LOGOUT" secondary={true} style={style} />
   </div>
 );
 
-export default Buttons;
+export const Button2 = () => (
+  <div>
+    <RaisedButton label="BORROW" secondary={true} style={style} />
+  </div>
+)

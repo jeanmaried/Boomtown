@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Masonry from 'react-masonry-component';
 import Gravatar from 'react-gravatar';
+import ItemCardList from '../ItemCardList';
+import './styles.css';
+import '../../flex.css'
 
 const ProfileCard = ({data, profileId}) => {
     console.log(data);
@@ -23,19 +26,30 @@ const ProfileCard = ({data, profileId}) => {
     const userBio = newProfile.length > 0 ? newProfile[0].itemowner.bio : null;
     const userPic = newProfile.length > 0 ? newProfile[0].itemowner.email : null;
     return (
-        <div>
-            <h1>{userName}</h1>
-            <p>{userBio}</p>
-            <div>
-                <p>{shared}</p>
-                <p>Items shared</p>
+        <div className="">
+            <div className="card_info flex justify-between flex-wrap">
+                <div>
+                    <h1>{userName}</h1>
+                    <p>{userBio}</p>
+                </div>
+                <div className="statsNpic flex justify-between align-items-center">
+                    <div>
+                        <div>
+                            <p>{shared}</p>
+                            <p>Items shared</p>
+                        </div>
+                        <div>
+                            <p>{borrowed}</p>
+                            <p>Item borrowed</p>
+                        </div>
+                    </div>
+                    <div className="profile_pic">
+                        {<Gravatar email={userPic} />}
+                    </div>
+                </div>
             </div>
-            <div>
-                <p>{borrowed}</p>
-                <p>Item borrowed</p>
-            </div>
-            {<Gravatar email={userPic} />}
             <Masonry className="masonry">
+                <ItemCardList data={newProfile}/>
             </Masonry>
         </div>
     )
