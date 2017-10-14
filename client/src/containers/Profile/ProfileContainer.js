@@ -24,25 +24,6 @@ class ProfileContainer extends Component{
 
 	componentDidMount(){
 		let profileId = this.props.match.params.userid;
-		let items_data = 'http://localhost:3001/items';
-		let users_data = 'http://localhost:3001/users';
-		let urls = [items_data, users_data];
-		
-		this.setState({isLoading:true})
-
-		Promise.all(urls.map(url =>
-			fetch(url).then(resp => resp.json())
-		)).then(data => {
-			const [items, users] = data;
-			let itemsWithOwners = items.map(item =>{
-				let owners = users.find(user => item.itemowner == user.id)
-				item.itemowner = owners;
-				return item;
-			})
-			this.setState({itemsData: itemsWithOwners, isLoading: false, profileId});
-		}).catch((err) => {
-			console.log(err);
-		})
 	}
 }
 

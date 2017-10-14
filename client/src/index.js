@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-
+import { Provider, connect } from 'react-redux';
+import store from './redux/store';
 import Items from './containers/Items';
 
 import './index.css';
@@ -19,7 +20,7 @@ import Profile from './containers/Profile';
 const Boomtown = () => (
     <BrowserRouter>
         <MuiThemeProvider muiTheme={muiTheme}>
-            <div>
+            <Provider store={store}>
                 <Switch>
                     <Route exact path="/login" component={Login} />
                     <Layout>
@@ -28,7 +29,7 @@ const Boomtown = () => (
                     </Layout>
                     {/* <Route component={NotFound} /> */}
                 </Switch>
-            </div>
+            </Provider>
         </MuiThemeProvider>
     </BrowserRouter>
 );
