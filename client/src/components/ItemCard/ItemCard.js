@@ -26,7 +26,7 @@ const ItemCard = ({item}) => {
             avatar={<Gravatar email={item.itemowner.email} />}
         />
         </Link>
-        <CardTitle title={item.title}  subtitle={item.tags}/>
+        <CardTitle title={item.title}  subtitle={item.tags.map(tag => tag).join(', ')}/>
         <CardText>
             <p>{item.description}</p>
         </CardText>
