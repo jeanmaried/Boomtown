@@ -10,7 +10,6 @@ import startOfToday from 'date-fns/start_of_today';
 import './styles.css'
 
 const ItemCard = ({item}) => {
-    console.log(item);
     return (
     <div>
         <Card>

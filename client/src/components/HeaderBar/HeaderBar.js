@@ -6,7 +6,6 @@ import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
 import {Buttons} from '../Buttons/Buttons';
 import Dropdown from '../Buttons/Dropdown';
-import AutoCompleted from './AutoComplete';
 import logo from '../../images/boomtown-logo.svg';
 import './styles.css';
 import '../../flex.css'

@@ -7,11 +7,10 @@ import './styles.css';
 import '../../flex.css'
 
 const ProfileCard = ({data, profileId}) => {
-    console.log(data);
     // console.log(profileId);
-    // console.log(this.props.match.params.userid);
+    // console.log(data);
 
-    let newProfile = data.filter(item =>{
+    const newProfile = data.filter(item =>{
         let newProfile = item.itemowner.id == profileId;
         return newProfile;
     })

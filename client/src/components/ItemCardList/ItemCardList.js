@@ -5,6 +5,7 @@ import Masonry from 'react-masonry-component';
 import './styles.css'
 
 const ItemCardList = ({data}) => {
+
     return (
         <Masonry className="masonry">
             {data.map((item) => {

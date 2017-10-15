@@ -12,7 +12,6 @@ import muiTheme from './config/theme';
 
 import Layout from './components/Layout';
 import Login from './containers/Login';
-import Routes from './Routes';
 import Profile from './containers/Profile';
 // import Share from '../containers/Share';
 // import NotFound from '../containers/NotFound';
