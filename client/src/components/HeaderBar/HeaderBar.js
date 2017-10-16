@@ -5,8 +5,10 @@ import {Link} from 'react-router-dom';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
 import {Buttons} from '../Buttons/Buttons';
-import Dropdown from '../Buttons/Dropdown';
+import Dropdown from './Dropdown';
+import { getDropDown } from '../../redux/modules/items';
 import logo from '../../images/boomtown-logo.svg';
+import { Provider, connect } from 'react-redux';
 import './styles.css';
 import '../../flex.css'
 
@@ -28,7 +30,7 @@ const HeaderBar = () => (
   <div className="header flex justify-between flex-wrap">
     <div className="logo flex justify-end">
       <Link to=""><img src={logo} alt="Boomtown Logo" /></Link>
-      <Dropdown />
+      <Dropdown onChange={getDropDown}/>
     </div>
     <div className="width">
     <Buttons/>
@@ -36,4 +38,8 @@ const HeaderBar = () => (
   </div>
 );
 
-export default HeaderBar;
+const mapStateToProps = state => ({
+  tag: state.items.tag
+});
+
+export default connect(mapStateToProps)(HeaderBar);

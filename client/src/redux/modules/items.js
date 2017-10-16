@@ -1,14 +1,22 @@
 //Actions
 
 const GET_ITEMS = 'GET_ITEMS';
+const GET_USER_ITEMS = 'GET_USER_ITEMS';
 const GET_ITEMS_LOADING = 'GET_ITEMS_LOADING';
 const GET_ITEMS_ERROR = 'GET_ITEMS_ERROR';
+const GET_DROP_DOWN = 'GET_DROP_DOWN';
+
 
 //ACTION CREATORS
 
 const getItems = (items) => ({
     type: GET_ITEMS,
     payload: items
+});
+
+const getUserItems = (users) => ({
+    type: GET_USER_ITEMS,
+    payload: users
 });
 
 const getItemsLoading = () => ({
@@ -20,6 +28,10 @@ const getItemsError = (error) => ({
     payload: error
 });
 
+export const getDropDown = (tag) => ({
+    type: GET_DROP_DOWN,
+    payload: tag
+});
 
 //HELPER
 
@@ -40,26 +52,38 @@ export const fetchItemsAndUsers = () => dispatch => {
             return item;
         });
         dispatch(getItems(itemsWithOwners));
+        dispatch(getUserItems(itemsWithOwners));
     })
     .catch((err) => {
         dispatch(getItemsError(err));
     });
 };
 
+// export const handleNav = (event, index, obj) => {
+//     // let tag = event.target.innerHTML;
+//     // this.dispatch(getDropDown(tag))
+//     console.log("hi")
+//   }
+
 //REDUCERS
 
 export default (
-    state= { itemsData: [], isLoading: false, error: '' },
+    state= { itemsData: [], isLoading: false, error: '', tag: [] },
     action
 )=>{
     switch (action.type){
         case GET_ITEMS:
             return {...state, itemsData: action.payload, isLoading: false, error: ''};
+        case GET_USER_ITEMS:
+            return {...state, itemsData: action.payload, isLoading: false, error: '',};
         case GET_ITEMS_LOADING:
             return {...state, isLoading: true, error: ''};
         case GET_ITEMS_ERROR:
             return {...state, isLoading: false, error: action.payload };
+        case GET_DROP_DOWN:
+            return {...state, isLoading: false, error: '', tag: action.payload }
         default:
+            console.log(state);
             return state
     }
 };

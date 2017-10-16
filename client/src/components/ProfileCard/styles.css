@@ -2,6 +2,7 @@
     background: white;
     height: 25rem;
     line-height: 300%;
+    max-width: 50rem;
     margin: 2.2rem 1% 2.2rem 1% ;
     padding: 1.5rem 3rem 1.5rem 3rem;
 }

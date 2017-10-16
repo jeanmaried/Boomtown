@@ -6,6 +6,10 @@
     padding: .5rem;
 }
 
+.appContent{
+    margin: 0;
+}
+
 @media screen and (min-width: 600px){
     .item-width{
         width: 50%;
@@ -15,5 +19,11 @@
 @media screen and (min-width: 960px){
     .item-width{
         width: 33.33%;
+        max-width: 25rem;
+    }
+    .appContent{
+        width: 100vh;
+        overflow: hidden;
+        margin: auto;
     }
 }

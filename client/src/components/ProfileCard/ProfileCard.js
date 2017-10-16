@@ -18,6 +18,8 @@ const ProfileCard = ({data, profileId}) => {
     let shared = 0;
     newProfile.map(user => shared += 1);
 
+    let itemS = shared > 1 || shared == 0 ? "Items" : "Item";
+
     let borrowed = 0;
     data.map(item => item.borrower == profileId ? borrowed += 1 : null);
 
@@ -35,11 +37,11 @@ const ProfileCard = ({data, profileId}) => {
                     <div>
                         <div>
                             <p>{shared}</p>
-                            <p>Items shared</p>
+                            <p>{`${itemS} shared`}</p>
                         </div>
                         <div>
                             <p>{borrowed}</p>
-                            <p>Item borrowed</p>
+                            <p>{`${itemS} borrowed`}</p>
                         </div>
                     </div>
                     <div className="profile_pic">

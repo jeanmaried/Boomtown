@@ -7,7 +7,7 @@ import './styles.css'
 const ItemCardList = ({data}) => {
 
     return (
-        <Masonry className="masonry">
+        <Masonry className="masonry flex align-items-center">
             {data.map((item) => {
                 return <div className="item-width"><ItemCard key={item.id} item={item}/></div>
             })}
