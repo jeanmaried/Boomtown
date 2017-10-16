@@ -26,11 +26,11 @@ const styles = {
  * This example uses an [IconButton](/#/components/icon-button) on the left, has a clickable `title`
  * through the `onClick` property, and a [FlatButton](/#/components/flat-button) on the right.
  */
-const HeaderBar = () => (
+const HeaderBar = ({location}) => (
   <div className="header flex justify-between flex-wrap">
     <div className="logo flex justify-end">
       <Link to=""><img src={logo} alt="Boomtown Logo" /></Link>
-      <Dropdown onChange={getDropDown}/>
+      {/* {if location !== /userid : <Dropdown onChange={getDropDown}/> : null} */}
     </div>
     <div className="width">
     <Buttons/>

@@ -4,10 +4,10 @@ import HeaderBar from '../HeaderBar/';
 
 import './styles.css';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, location }) => (
     <div className="appContentWrapper">
         <div className="appHeader">
-            <HeaderBar />
+            {location.pathname !== '/login' ?  <HeaderBar /> : null}
         </div>
         <div className="appContent">
             {children}
