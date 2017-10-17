@@ -9,6 +9,7 @@ import Dropdown from './Dropdown';
 import { getDropDown } from '../../redux/modules/items';
 import logo from '../../images/boomtown-logo.svg';
 import { Provider, connect } from 'react-redux';
+import store from '../../redux/store';
 import './styles.css';
 import '../../flex.css'
 
@@ -47,4 +48,4 @@ const mapStateToProps = state => ({
   tag: state.items.tag
 });
 
-export default connect(mapStateToProps)(HeaderBar);
+export default connect(mapStateToProps, store)(HeaderBar);

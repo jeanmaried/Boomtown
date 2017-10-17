@@ -9,8 +9,6 @@ class ItemCardList extends Component{
     render(){
         let data = this.props.itemsData;
         let tags = this.props.tags;
-        // console.log(data);
-        // console.log(tags.length);
 
         //tells us whether a tag should be shown
         const isTagVisible = tag => this.props.tags.includes( tag ); 
@@ -22,7 +20,6 @@ class ItemCardList extends Component{
         const filteredItems = data.filter( doesItemHaveAnyVisibleTags );
 
         let newItems = filteredItems.length ? filteredItems : data;
-
         return (
             <Masonry className="masonry flex align-items-center">
                 {newItems.map(item => <div className="item-width"><ItemCard key={item.id} item={item}/></div>)}

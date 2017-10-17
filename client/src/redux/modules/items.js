@@ -59,12 +59,6 @@ export const fetchItemsAndUsers = () => dispatch => {
     });
 };
 
-// export const handleNav = (event, index, obj) => {
-//     // let tag = event.target.innerHTML;
-//     // this.dispatch(getDropDown(tag))
-//     console.log("hi")
-//   }
-
 //REDUCERS
 
 export default (

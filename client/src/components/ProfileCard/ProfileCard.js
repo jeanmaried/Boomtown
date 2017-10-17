@@ -7,8 +7,6 @@ import './styles.css';
 import '../../flex.css'
 
 const ProfileCard = ({data, profileId}) => {
-    // console.log(profileId);
-    // console.log(data);
 
     const newProfile = data.filter(item =>{
         let newProfile = item.itemowner.id == profileId;
@@ -27,7 +25,7 @@ const ProfileCard = ({data, profileId}) => {
     const userBio = newProfile.length > 0 ? newProfile[0].itemowner.bio : null;
     const userPic = newProfile.length > 0 ? newProfile[0].itemowner.email : null;
     return (
-        <div className="">
+        <div>
             <div className="card_info flex justify-between flex-wrap">
                 <div>
                     <h1>{userName}</h1>
@@ -50,7 +48,7 @@ const ProfileCard = ({data, profileId}) => {
                 </div>
             </div>
             <Masonry className="masonry">
-                <ItemCardList data={newProfile}/>
+                <ItemCardList/>
             </Masonry>
         </div>
     )
