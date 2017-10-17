@@ -8,17 +8,24 @@ import './styles.css'
 class ItemCardList extends Component{
     render(){
         let data = this.props.itemsData;
-        let tagsArray = this.props.tags;
+        let tags = this.props.tags;
+        // console.log(data);
+        // console.log(tags.length);
+
+        //tells us whether a tag should be shown
+        const isTagVisible = tag => this.props.tags.includes( tag ); 
+
+        //tells us whether an item has any tags that should be shown
+        const doesItemHaveAnyVisibleTags = item => item.tags.some( isTagVisible ); 
+
+        //filters only items that have any tags that should be shown
+        const filteredItems = data.filter( doesItemHaveAnyVisibleTags );
+
+        let newItems = filteredItems.length ? filteredItems : data;
 
         return (
             <Masonry className="masonry flex align-items-center">
-
-                {data.filter((item) => {
-                    let newItem = item.tags.map(tag => tag == tagsArray.map(tagArr => tagArr))
-                console.log(newItem)
-                })
-                    // return <div className="item-width"><ItemCard key={newItem.id} item={newItem}/></div>
-                }
+                {newItems.map(item => <div className="item-width"><ItemCard key={item.id} item={item}/></div>)}
             </Masonry>
         )
     }
