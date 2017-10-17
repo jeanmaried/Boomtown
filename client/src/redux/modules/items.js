@@ -28,11 +28,11 @@ const getItemsError = (error) => ({
     payload: error
 });
 
-export const getDropDown = (tag) => ({
-    type: GET_DROP_DOWN,
-    payload: tag
-});
-
+export const getDropDown = (tags) => {
+    return function(dispatch) {
+        dispatch({type: GET_DROP_DOWN, payload: tags})
+    }
+}
 //HELPER
 
 export const fetchItemsAndUsers = () => dispatch => {
@@ -68,7 +68,7 @@ export const fetchItemsAndUsers = () => dispatch => {
 //REDUCERS
 
 export default (
-    state= { itemsData: [], isLoading: false, error: '', tag: [] },
+    state= { itemsData: [], isLoading: false, error: '', tags: [] },
     action
 )=>{
     switch (action.type){
@@ -81,9 +81,8 @@ export default (
         case GET_ITEMS_ERROR:
             return {...state, isLoading: false, error: action.payload };
         case GET_DROP_DOWN:
-            return {...state, isLoading: false, error: '', tag: action.payload }
+            return {...state, isLoading: false, error: '', tags: action.payload }
         default:
-            console.log(state);
             return state
     }
 };

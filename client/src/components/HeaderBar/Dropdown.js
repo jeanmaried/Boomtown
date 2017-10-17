@@ -4,20 +4,17 @@ import { connect } from 'react-redux';
 
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
-import {getDropDown} from '../../redux/modules/items';
+import * as actions from '../../redux/modules/items';
 
-const tags = ['Electronics', 'Household Items', 'Musical Instruments',
+const tagsList = ['Electronics', 'Household Items', 'Musical Instruments',
 'Physical Media', 'Recreational Equipment', 'Sporting Goods', 'Tools'];
 
 class Dropdown extends Component {
-  state = {
-    values: [],
-  };
 
-  handleChange = (event, index, values) => this.setState({values});
+  handleChange = (event, index, values) => this.props.getDropDown(values);
 
   menuItems(values) {
-    return tags.map((tag) => (
+    return tagsList.map((tag) => (
       <MenuItem
         key={tag}
         insetChildren={true}
@@ -29,7 +26,7 @@ class Dropdown extends Component {
   }
 
   render() {
-    const {values} = this.state;
+    const values = this.props.tags;
     return (
       <SelectField
         multiple={true}
@@ -44,6 +41,6 @@ class Dropdown extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoading: state.items.tag,
+  tags: state.items.tags,
 });
-export default connect(mapStateToProps)(Dropdown);
+export default connect(mapStateToProps, actions)(Dropdown);

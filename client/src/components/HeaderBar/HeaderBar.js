@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import {Link} from 'react-router-dom';
@@ -26,17 +26,22 @@ const styles = {
  * This example uses an [IconButton](/#/components/icon-button) on the left, has a clickable `title`
  * through the `onClick` property, and a [FlatButton](/#/components/flat-button) on the right.
  */
-const HeaderBar = ({location}) => (
-  <div className="header flex justify-between flex-wrap">
-    <div className="logo flex justify-end">
-      <Link to=""><img src={logo} alt="Boomtown Logo" /></Link>
-      {/* {if location !== /userid : <Dropdown onChange={getDropDown}/> : null} */}
+class HeaderBar extends Component{
+  render(){
+    return(
+      <div className="header flex justify-between flex-wrap">
+      <div className="logo flex justify-end">
+        <Link to=""><img src={logo} alt="Boomtown Logo" /></Link>
+        <Dropdown onChange={this.props.getDropDown}/>
+        {/* {if location !== /userid : <Dropdown onChange={getDropDown}/> : null} */}
+      </div>
+      <div className="width">
+      <Buttons/>
+      </div>
     </div>
-    <div className="width">
-    <Buttons/>
-    </div>
-  </div>
-);
+    )
+  }
+} 
 
 const mapStateToProps = state => ({
   tag: state.items.tag
