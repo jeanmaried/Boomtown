@@ -6,6 +6,10 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider, connect } from 'react-redux';
 import store from './redux/store';
 import Items from './containers/Items';
+import { ApolloProvider } from 'react-apollo';
+import client from './config/apolloClient';
+import createHistory from 'history/createBrowserHistory';
+import {ConnectedRouter} from 'react-router-redux';
 
 import './index.css';
 import muiTheme from './config/theme';
@@ -19,16 +23,18 @@ import Profile from './containers/Profile';
 const Boomtown = () => (
     <BrowserRouter>
         <MuiThemeProvider muiTheme={muiTheme}>
-            <Provider store={store}>
-                <Switch>
-                    <Layout>
-                        <Route exact path="/login" component={Login} />
-                        <Route exact path="/" component={Items} />
-                        <Route path="/profile/:userid" component={Profile} />
-                    </Layout>
-                    {/* <Route component={NotFound} /> */}
-                </Switch>
-            </Provider>
+            <ApolloProvider client={client} store={store}>
+                <ConnectedRouter history={history}>
+                    <Switch>
+                        <Layout>
+                            <Route exact path="/login" component={Login} />
+                            <Route exact path="/" component={Items} />
+                            <Route path="/profile/:userid" component={Profile} />
+                        </Layout>
+                        {/* <Route component={NotFound} /> */}
+                    </Switch>
+                    </ConnectedRouter>
+            </ApolloProvider>
         </MuiThemeProvider>
     </BrowserRouter>
 );

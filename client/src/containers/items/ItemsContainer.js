@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import Items from './Items';
 import Loader from '../../components/Loader';
 import { fetchItemsAndUsers } from '../../redux/modules/items';
-import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 class ItemsContainer extends Component{
 
@@ -24,9 +26,29 @@ ItemsContainer.propTypes = {
 
 };
 
+const itemsQuery = gql`
+query getItems {
+	items {
+		id
+		title
+		imageurl
+		description
+		itemowner {
+			id
+			email
+			fullname
+		}
+		created
+		borrower {
+			fullname
+		}
+	}
+}`
+
 const mapStateToProps = state => ({
     isLoading: state.items.isLoading,
     itemsData: state.items.itemsData,
     itemFilters: state.items.itemFilters
 });
-export default connect(mapStateToProps)(ItemsContainer);
+const ItemsContainerWithData = graphql(itemsQuery)(ItemsContainer)
+export default connect(mapStateToProps)(ItemsContainerWithData);

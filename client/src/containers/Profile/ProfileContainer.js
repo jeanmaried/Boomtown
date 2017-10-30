@@ -4,6 +4,9 @@ import Profile from './Profile';
 import Loader from '../../components/Loader'
 import { fetchItemsAndUsers} from '../../redux/modules/items';
 import { Provider, connect } from 'react-redux';
+import { connect } from 'react-redux';
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 import '../../flex.css';
 import './styles.css'
 
@@ -24,6 +27,36 @@ class ProfileContainer extends Component{
 	}
 }
 
+const userQuery = gql`
+	query getUser($id: String) {
+		user(id: $id) {
+			id
+			email
+			fullname
+			bio
+			item{
+				id
+				title
+				imageurl
+				description
+				tags{
+					title
+				}
+				created
+				borrower {
+					fullname
+				}
+			}
+			borrowed {
+				title
+				itemowner {
+					fullname
+				}
+			}
+		}
+	}
+`
+
 ProfileContainer.propTypes = {
 
 };
@@ -33,4 +66,11 @@ const mapStateToProps = state => ({
     itemsData: state.items.itemsData,
     itemFilters: state.items.itemFilters
 });
-export default connect(mapStateToProps)(ProfileContainer);
+const ItemsContainerWithData = graphql(userQuery, {
+	options: (ownProps) => ({
+		variables: {
+			id: ownProps.match.params.userid // this gets the id from the url. It will then pass it to the query i am making as the id variable (you can get rid of this.props.match.params.userid)
+		}
+	})
+})(ProfileContainer);
+// export default connect(mapStateToProps)(ProfileContainer);
