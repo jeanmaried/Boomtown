@@ -33,5 +33,5 @@ initConfigs(app);
 initPostgres(app);
 
 app.listen(PORT, () => console.log(
-    `GraphQL isnow running on http://localhost:${PORT}/graphql`
+    `GraphQL is now running on http://localhost:${PORT}/graphql`
 ));
